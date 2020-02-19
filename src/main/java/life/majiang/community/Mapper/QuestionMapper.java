@@ -14,6 +14,15 @@ public interface QuestionMapper {
             "values (#{title},#{description},#{gmtCreate},#{gmtModified},#{creator},#{tag})")
     void create(Question question);
 
-    @Select("select * from QUESTION")
-    List<Question> list();
+    @Select("select * from QUESTION order by GMT_CREATE desc limit #{offset},#{size} ")
+    List<Question> list(Integer offset, Integer size);
+
+    @Select("select count(1) from QUESTION")
+    Integer count();
+
+    @Select("select * from QUESTION where creator = #{userId} order by GMT_CREATE desc limit #{offset},#{size}")
+    List<Question> listByUserId(Integer userId, Integer offset, Integer size);
+
+    @Select("select count(1) from QUESTION where creator = #{userId} ")
+    Integer countByUserId(Integer userId);
 }
