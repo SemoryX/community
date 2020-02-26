@@ -1,4 +1,4 @@
-package life.majiang.community.Interceptor;
+package life.majiang.community.interceptor;
 
 import life.majiang.community.mapper.UserMapper;
 import life.majiang.community.model.User;
